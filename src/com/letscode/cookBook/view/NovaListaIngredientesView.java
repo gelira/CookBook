@@ -17,6 +17,7 @@ public class NovaListaIngredientesView {
     }
 
     public Ingrediente[] askIngredientes() {
+        System.out.println("[LISTA DE INGREDIENTES]");
         int op;
 
         do {
