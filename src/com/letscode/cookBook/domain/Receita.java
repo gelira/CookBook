@@ -117,6 +117,11 @@ public class Receita {
             modoPreparoString += String.format("%s%n", instrucao);
         }
 
+        String rendimento = "";
+        if (this.rendimento != null) {
+            rendimento = this.rendimento.toString();
+        }
+
         return String.format("%s%n\t%s%n%nRendimento: %s%nTempo: %s%nIngredientes:%n%s%nModo de preparo:%n%s",
                 nome, categoria, rendimento, tempo, ingredientesString, modoPreparoString);
     }
