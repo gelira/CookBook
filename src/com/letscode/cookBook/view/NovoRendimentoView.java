@@ -10,6 +10,7 @@ public class NovoRendimentoView {
     private TipoRendimento tipoRendimento;
 
     public Rendimento askRendimento() {
+        System.out.println("[RENDIMENTO]");
         askTipoRendimento();
         askQuantidade();
 

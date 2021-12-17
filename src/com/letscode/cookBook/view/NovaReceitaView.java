@@ -21,6 +21,7 @@ public class NovaReceitaView {
     }
 
     public Receita askReceita() {
+        System.out.println("[NOVA RECEITA]");
         askNome();
         askCategoria();
         askIngredientes();

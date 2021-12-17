@@ -12,6 +12,7 @@ public class NovoModoPreparoView {
     }
 
     public String[] askModoPreparo() {
+        System.out.println("[MODO DE PREPARO]");
         int op;
 
         do {
