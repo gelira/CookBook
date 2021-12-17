@@ -1,5 +1,6 @@
 package com.letscode.cookBook.view;
 
+import com.letscode.cookBook.controller.Catalogo;
 import com.letscode.cookBook.domain.Ingrediente;
 import com.letscode.cookBook.domain.Receita;
 import com.letscode.cookBook.domain.Rendimento;
@@ -13,6 +14,11 @@ public class NovaReceitaView {
     private Ingrediente[] ingredientes;
     private String[] modoPreparo;
     private Rendimento rendimento;
+    private Catalogo catalogoController;
+
+    public NovaReceitaView(Catalogo catalogoController) {
+        this.catalogoController = catalogoController;
+    }
 
     public Receita askReceita() {
         askNome();
@@ -37,6 +43,10 @@ public class NovaReceitaView {
 
             if (nome.isBlank()) {
                 System.out.println("Nome inválido!");
+                continue;
+            }
+            if (catalogoController.getReceita(nome) != null) {
+                System.out.println("Já existe uma receita com esse nome.");
                 continue;
             }
             break;
