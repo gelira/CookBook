@@ -1,25 +1,39 @@
 package com.letscode.cookBook.view;
 
+import com.letscode.cookBook.domain.Ingrediente;
 import com.letscode.cookBook.domain.Receita;
+import com.letscode.cookBook.domain.Rendimento;
 import com.letscode.cookBook.enums.Categoria;
 
 import java.util.Scanner;
 
 public class NovaReceitaView {
-    Scanner scanner;
-    Receita receita;
-    String nome;
-    Categoria categoria;
+    private String nome;
+    private Categoria categoria;
+    private Ingrediente[] ingredientes;
+    private String[] modoPreparo;
+    private Rendimento rendimento;
 
-    public NovaReceitaView() {
-        this.scanner = new Scanner(System.in);
+    public Receita askReceita() {
+        askNome();
+        askCategoria();
+        askIngredientes();
+        askModoPreparo();
+        askRendimento();
+
+        Receita receita = new Receita(nome, categoria);
+        receita.setIngredientes(ingredientes);
+        receita.setModoPreparo(modoPreparo);
+        receita.setRendimento(rendimento);
+
+        return receita;
     }
 
-    public void askNome() {
+    private void askNome() {
         do {
             System.out.println("Qual o nome da receita?");
 
-            nome = scanner.nextLine();
+            nome = new Scanner(System.in).nextLine();
 
             if (nome.isBlank()) {
                 System.out.println("Nome inválido!");
@@ -29,7 +43,8 @@ public class NovaReceitaView {
         } while (true);
     }
 
-    public void askCategoria() {
+    private void askCategoria() {
+        int op;
         Categoria[] categoriaValues = Categoria.values();
 
         do {
@@ -38,7 +53,12 @@ public class NovaReceitaView {
                 System.out.printf("%d - %s", cat.ordinal(), cat.name());
             }
 
-            int op = scanner.nextInt();
+            try {
+                op = new Scanner(System.in).nextInt();
+            }
+            catch (Exception e) {
+                op = -1;
+            }
 
             if (op < 0 || op >= categoriaValues.length) {
                 System.out.println("Categoria inválida!");
@@ -48,5 +68,17 @@ public class NovaReceitaView {
             categoria = categoriaValues[op];
             break;
         } while (true);
+    }
+
+    private void askIngredientes() {
+        ingredientes = new NovaListaIngredientesView().askIngredientes();
+    }
+
+    private void askModoPreparo() {
+        modoPreparo = new NovoModoPreparoView().askModoPreparo();
+    }
+
+    private void askRendimento() {
+        rendimento = new NovoRendimentoView().askRendimento();
     }
 }
