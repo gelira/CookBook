@@ -5,7 +5,7 @@ public enum TipoMedida {
     GRAMAS,
     LITROS,
     MILILITROS,
-    CHICARA,
+    XICARA,
     COPO,
     COLHER_DE_SOPA,
     COLHER_DE_CHA,
