@@ -58,6 +58,12 @@ public class CatalogoView {
         }
     }
 
+    private void search() {
+        System.out.print("Nome da receita: ");
+        String nome = new Scanner(System.in).nextLine();
+        receita = controller.getReceita(nome);
+    }
+
     private void showMenu() {
         ScreenUtil.printTextLine("", 80, true, '=');
         ScreenUtil.printTextLine("P: Receita anterior", 80, true);
@@ -94,7 +100,7 @@ public class CatalogoView {
                     del();
                     break;
                 case "S":
-                    //TODO: Implement Search
+                    search();
                     break;
                 case "Q":
                     System.out.println("Até mais! ;)");
