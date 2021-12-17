@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AddListaIngredientesView {
+public class NovaListaIngredientesView {
     private String nome;
     private double quantidade;
     private TipoMedida tipoQuantidade;
     private List<Ingrediente> listaIngredientes;
 
-    public AddListaIngredientesView() {
+    public NovaListaIngredientesView() {
         listaIngredientes = new ArrayList<>();
     }
 
