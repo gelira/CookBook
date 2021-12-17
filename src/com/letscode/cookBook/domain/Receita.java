@@ -57,6 +57,8 @@ public class Receita {
     }
 
     public void setIngredientes(Ingrediente[] ingredientes) {
+        this.ingredientes.clear();
+
         for (Ingrediente item : ingredientes) {
             this.ingredientes.add(item);
         }
@@ -72,14 +74,10 @@ public class Receita {
         return modoPreparoArray;
     }
 
-    public void setModoPreparo(List<String> modoPreparoList) {
-        if (modoPreparoList == null) {
-            return;
-        }
-
+    public void setModoPreparo(String[] modoPreparoArray) {
         modoPreparo.clear();
 
-        for (String instrucao : modoPreparoList) {
+        for (String instrucao : modoPreparoArray) {
             modoPreparo.add(instrucao);
         }
     }
