@@ -60,6 +60,7 @@ public class CatalogoView {
         ScreenUtil.printTextLine("+: Adicionar nova receita", 80, true);
         ScreenUtil.printTextLine("-: Remover receita", 80, true);
         ScreenUtil.printTextLine("S: Pesquisar receita", 80, true);
+        ScreenUtil.printTextLine("Q: Sair", 80, true);
         ScreenUtil.printTextLine("", 80, true, '=');
         ScreenUtil.printTextLine("#: ", 80);
     }
@@ -90,6 +91,9 @@ public class CatalogoView {
                 case "S":
                     //TODO: Implement Search
                     break;
+                case "Q":
+                    System.out.println("Até mais! ;)");
+                    return;
                 default:
                     ScreenUtil.printTextLine("Opção inválida", 80);
             }
