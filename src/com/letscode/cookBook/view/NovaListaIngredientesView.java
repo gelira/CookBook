@@ -1,20 +1,19 @@
 package com.letscode.cookBook.view;
 
+import com.letscode.cookBook.controller.ListaIngredientes;
 import com.letscode.cookBook.domain.Ingrediente;
 import com.letscode.cookBook.enums.TipoMedida;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class NovaListaIngredientesView {
     private String nome;
     private double quantidade;
     private TipoMedida tipoQuantidade;
-    private List<Ingrediente> listaIngredientes;
+    private ListaIngredientes listaIngredientesController;
 
     public NovaListaIngredientesView() {
-        listaIngredientes = new ArrayList<>();
+        listaIngredientesController = new ListaIngredientes();
     }
 
     public Ingrediente[] askIngredientes() {
@@ -22,7 +21,7 @@ public class NovaListaIngredientesView {
 
         do {
             Ingrediente ingrediente = askIngrediente();
-            listaIngredientes.add(ingrediente);
+            listaIngredientesController.addIngrediente(ingrediente);
 
             System.out.print("Adicionar mais um ingrediente? [0 - Não / qualquer coisa - Sim] ");
             try {
@@ -33,13 +32,7 @@ public class NovaListaIngredientesView {
             }
         } while (op != 0);
 
-        Ingrediente[] ingredientesArray = new Ingrediente[listaIngredientes.size()];
-
-        for (int i = 0; i < listaIngredientes.size(); i ++) {
-            ingredientesArray[i] = listaIngredientes.get(i);
-        }
-
-        return ingredientesArray;
+        return listaIngredientesController.getIngredientes();
     }
 
     private Ingrediente askIngrediente() {
@@ -60,6 +53,11 @@ public class NovaListaIngredientesView {
                 System.out.println("Nome inválido!");
                 continue;
             }
+            if (listaIngredientesController.checkIngredienteExists(nome)) {
+                System.out.println("Ingrediente já existe!");
+                continue;
+            }
+
             break;
         } while (true);
     }
