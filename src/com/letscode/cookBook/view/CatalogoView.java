@@ -9,8 +9,12 @@ import java.util.Scanner;
 public class CatalogoView {
     private final Receita NONE_FOUND = new Receita("Nenhuma receita encontrada", Categoria.PRATO_UNICO);
     private Receita receita;
-    Catalogo controller;
+    private Catalogo controller;
     private int curIndex = -1;
+
+    public CatalogoView() {
+        controller = new Catalogo();
+    }
 
     private void showHeader() {
         ScreenUtil.printTextLine("", 80, true, '=');
