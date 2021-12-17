@@ -53,9 +53,7 @@ public class CatalogoView {
         }
     }
 
-    public void show() {
-        showHeader();
-        showReceita(receita == null ? NONE_FOUND : receita);
+    private void showMenu() {
         ScreenUtil.printTextLine("", 80, true, '=');
         ScreenUtil.printTextLine("P: Receita anterior", 80, true);
         ScreenUtil.printTextLine("N: Receita seguinte", 80, true);
@@ -64,7 +62,15 @@ public class CatalogoView {
         ScreenUtil.printTextLine("S: Pesquisar receita", 80, true);
         ScreenUtil.printTextLine("", 80, true, '=');
         ScreenUtil.printTextLine("#: ", 80);
+    }
+
+    public void show() {
+        showHeader();
+        showReceita(receita == null ? NONE_FOUND : receita);
+        showMenu();
+
         String option;
+
         do {
             option = new Scanner(System.in).next();
             switch (option.toUpperCase()) {
