@@ -11,10 +11,11 @@ public class Receita {
     private int tempoPreparo;
     private Rendimento rendimento;
     private List<Ingrediente> ingredientes;
-    private String[] modoPreparo;
+    private List<String> modoPreparo;
 
     public Receita(String nome, Categoria categoria) {
         this.ingredientes = new ArrayList<>();
+        this.modoPreparo = new ArrayList<>();
         this.nome = nome;
         this.categoria = categoria;
     }
@@ -62,11 +63,25 @@ public class Receita {
     }
 
     public String[] getModoPreparo() {
-        return modoPreparo;
+        String[] modoPreparoArray = new String[modoPreparo.size()];
+
+        for (int i = 0; i < modoPreparo.size(); i ++) {
+            modoPreparoArray[i] = modoPreparo.get(i);
+        }
+
+        return modoPreparoArray;
     }
 
-    public void setModoPreparo(String[] modoPreparo) {
-        this.modoPreparo = modoPreparo;
+    public void setModoPreparo(List<String> modoPreparoList) {
+        if (modoPreparoList == null) {
+            return;
+        }
+
+        modoPreparo.clear();
+
+        for (String instrucao : modoPreparoList) {
+            modoPreparo.add(instrucao);
+        }
     }
 
     @Override
