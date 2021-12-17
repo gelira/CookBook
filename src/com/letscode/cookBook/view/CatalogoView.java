@@ -43,7 +43,8 @@ public class CatalogoView {
     }
 
     private void add() {
-        //TODO: Implement Add
+        Receita receita = new NovaReceitaView(controller).askReceita();
+        controller.add(receita);
     }
 
     private void del() {
