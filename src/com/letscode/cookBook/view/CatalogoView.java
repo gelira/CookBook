@@ -26,8 +26,8 @@ public class CatalogoView {
         ScreenUtil.printTextLine("", 80, true, '=');
     }
 
-    private void showReceita(Receita receita) {
-        System.out.println(receita.toString());
+    private void showReceita() {
+        System.out.println(receita == null ? NONE_FOUND : receita);
     }
 
     private void showAnterior() {
@@ -66,12 +66,13 @@ public class CatalogoView {
 
     public void show() {
         showHeader();
-        showReceita(receita == null ? NONE_FOUND : receita);
-        showMenu();
 
         String option;
 
         do {
+            showReceita();
+            showMenu();
+
             option = new Scanner(System.in).next();
             switch (option.toUpperCase()) {
                 case "P":
@@ -91,7 +92,6 @@ public class CatalogoView {
                     break;
                 default:
                     ScreenUtil.printTextLine("Opção inválida", 80);
-                    ScreenUtil.printTextLine("#: ", 80);
             }
         } while (true);
     }
