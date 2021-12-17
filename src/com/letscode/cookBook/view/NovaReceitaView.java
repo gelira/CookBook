@@ -60,7 +60,7 @@ public class NovaReceitaView {
         do {
             System.out.println("Qual a categoria da receita?");
             for (Categoria cat : categoriaValues) {
-                System.out.printf("%d - %s", cat.ordinal(), cat.name());
+                System.out.printf("%d - %s%n", cat.ordinal(), cat.name());
             }
 
             try {
