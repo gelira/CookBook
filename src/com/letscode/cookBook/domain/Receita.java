@@ -102,11 +102,24 @@ public class Receita {
     @Override
     public String toString() {
         int segundos = tempoPreparo % 60;
-        int minutos = tempoPreparo > 60 ? tempoPreparo % (60*60) : 0;
-        int horas = tempoPreparo > 60*60 ? tempoPreparo % (60*60*24) : 0;
+        int minutos = tempoPreparo % (60 * 60);
+        int horas = tempoPreparo % (24 * 60 * 60);
+
         String tempo = horas > 0 ? horas + " horas " : "";
         tempo += minutos > 0 ? minutos + " minutos " : "";
         tempo += segundos > 0 ? segundos + " segundos " : "";
-        return String.format("%s%n\t%s%n%nRendimento: %s%nTempo: %s%nIngredientes:%n%s%nModo de preparo:%n%s", nome, categoria, rendimento, tempo, ingredientes, modoPreparo);
+
+        String ingredientesString = "";
+        for (Ingrediente ingrediente : ingredientes) {
+            ingredientesString += String.format("%s%n", ingrediente);
+        }
+
+        String modoPreparoString = "";
+        for (String instrucao : modoPreparo) {
+            modoPreparoString += String.format("%s%n", instrucao);
+        }
+
+        return String.format("%s%n\t%s%n%nRendimento: %s%nTempo: %s%nIngredientes:%n%s%nModo de preparo:%n%s",
+                nome, categoria, rendimento, tempo, ingredientesString, modoPreparoString);
     }
 }
