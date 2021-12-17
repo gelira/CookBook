@@ -32,24 +32,29 @@ public class CatalogoView {
 
     private void showAnterior() {
         if (curIndex > 0) {
-            this.receita = controller.getReceita(curIndex - 1);
-            if (receita != null) curIndex--;
+            receita = controller.getReceita(curIndex - 1);
+            if (receita != null) {
+                curIndex--;
+            }
         }
     }
 
     private void showSeguinte() {
-        this.receita = controller.getReceita(curIndex + 1);
-        if (receita != null) curIndex++;
+        receita = controller.getReceita(curIndex + 1);
+        if (receita != null) {
+            curIndex++;
+        }
     }
 
     private void add() {
-        Receita receita = new NovaReceitaView(controller).askReceita();
-        controller.add(receita);
+        Receita novaReceita = new NovaReceitaView(controller).askReceita();
+        controller.add(novaReceita);
     }
 
     private void del() {
         if (curIndex >= 0) {
             controller.del(receita.getNome());
+            receita = null;
         }
     }
 
